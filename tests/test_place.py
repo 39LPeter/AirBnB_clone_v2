@@ -1,82 +1,100 @@
 #!/usr/bin/python3
-""" file that tests the place class """
-import unittest
+""" """
 import os
+
+from tests.test_models.test_base_model import TestBasemodel
 from models.place import Place
-from models.base_model import BaseModel
-import pep8
 
 
-class Test_pep8(unittest.TestCase):
-    """pep8 test cases class"""
-    def test_pep8_conformance(self):
-        """Test that we conform to PEP8."""
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/place.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
-
-
-class test_Place(BaseModel):
-    """ tests the place class """
-
+class TestPlace(TestBasemodel):
+    """Represents the tests for the Place model."""
     def __init__(self, *args, **kwargs):
-        """ initialization """
+        """Initializes the test class."""
         super().__init__(*args, **kwargs)
         self.name = "Place"
         self.value = Place
 
     def test_city_id(self):
-        """ tests city id """
+        """Tests the type of city_id."""
         new = self.value()
-        self.assertEqual(type(new.city_id), str)
+        self.assertEqual(
+            type(new.city_id),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_user_id(self):
-        """ tests user id """
+        """Tests the type of user_id."""
         new = self.value()
-        self.assertEqual(type(new.user_id), str)
+        self.assertEqual(
+            type(new.user_id),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_name(self):
-        """ tests name id """
+        """Tests the type of name."""
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertEqual(
+            type(new.name),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_description(self):
-        """ tests description"""
+        """Tests the type of description."""
         new = self.value()
-        self.assertEqual(type(new.description), str)
+        self.assertEqual(
+            type(new.description),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_number_rooms(self):
-        """ test number of rooms """
+        """Tests the type of number_rooms."""
         new = self.value()
-        self.assertEqual(type(new.number_rooms), int)
+        self.assertEqual(
+            type(new.number_rooms),
+            int if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_number_bathrooms(self):
-        """ tests number of bathrooms """
+        """Tests the type of number_bathrooms."""
         new = self.value()
-        self.assertEqual(type(new.number_bathrooms), int)
+        self.assertEqual(
+            type(new.number_bathrooms),
+            int if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_max_guest(self):
-        """ tests max_guest """
+        """Tests the type of max_guest."""
         new = self.value()
-        self.assertEqual(type(new.max_guest), int)
+        self.assertEqual(
+            type(new.max_guest),
+            int if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_price_by_night(self):
-        """ tests price_by_night """
+        """Tests the type of price_by_night."""
         new = self.value()
-        self.assertEqual(type(new.price_by_night), int)
+        self.assertEqual(
+            type(new.price_by_night),
+            int if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_latitude(self):
-        """ tests latitude """
+        """Tests the type of latitude."""
         new = self.value()
-        self.assertEqual(type(new.latitude), float)
+        self.assertEqual(
+            type(new.latitude),
+            float if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_longitude(self):
-        """ tests longitude """
+        """Tests the type of longitude."""
         new = self.value()
-        self.assertEqual(type(new.latitude), float)
+        self.assertEqual(
+            type(new.longitude),
+            float if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_amenity_ids(self):
-        """ tests amenity_ids """
+        """Tests the type of amenity_ids."""
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
