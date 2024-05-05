@@ -1,40 +1,39 @@
 #!/usr/bin/python3
-""" tests the review class """
-from models.base_model import BaseModel
+""" """
+import os
+
+from tests.test_models.test_base_model import TestBasemodel
 from models.review import Review
-import pep8
 
 
-class Test_pep8(unittest.TestCase):
-    """pep8 test cases class"""
-    def test_pep8_conformance(self):
-        """Test that we conform to PEP8."""
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/review.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
-
-
-class test_review(BaseModel):
-    """ tests the review class """
-
+class TestReview(TestBasemodel):
+    """Represents the tests for the Review model."""
     def __init__(self, *args, **kwargs):
-        """ """
+        """Initializes the test class."""
         super().__init__(*args, **kwargs)
         self.name = "Review"
         self.value = Review
 
     def test_place_id(self):
-        """ """
+        """Tests the type of place_id."""
         new = self.value()
-        self.assertEqual(type(new.place_id), str)
+        self.assertEqual(
+            type(new.place_id),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_user_id(self):
-        """ """
+        """Tests the type of user_id."""
         new = self.value()
-        self.assertEqual(type(new.user_id), str)
+        self.assertEqual(
+            type(new.user_id),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
 
     def test_text(self):
-        """ """
+        """Tests the type of text."""
         new = self.value()
-        self.assertEqual(type(new.text), str)
+        self.assertEqual(
+            type(new.text),
+            str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
+        )
