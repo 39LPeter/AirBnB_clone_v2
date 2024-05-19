@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Configures a web server for deployment of web_static.
 
 # Nginx configuration file
@@ -89,3 +90,6 @@ file { '/etc/nginx/sites-available/default':
 exec { 'nginx restart':
   path => '/etc/init.d/'
 }
+=======
+
+>>>>>>> 9f0238647ded2922ae88e93684a32e72254a4d15
