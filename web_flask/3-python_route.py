@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """Starts a Flask web application.
 
 The application listens on 0.0.0.0, port 5000.
@@ -48,3 +49,39 @@ def python(text="is cool"):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
+=======
+"""Script that prepares a Flask web app"""
+from flask import Flask
+app = Flask(__name__)
+app.url_map.strict_slashes = False
+
+
+@app.route('/')
+def hi_hbnb():
+    """display “Hello HBNB!” on the terminal"""
+    return 'Hello HBNB!'
+
+
+@app.route('/hbnb',)
+def hbnb():
+    """Display HBNB"""
+    return 'HBNB!'
+
+
+@app.route('/c/<text>')
+def c(text):
+    """display c follow by the value"""
+    repla = text.replace('_', ' ')
+    return 'C {}' .format(repla)
+
+
+@app.route('/python')
+@app.route('/python/<text>')
+def python(text="is cool"):
+    """Display python follow by the text"""
+    repla = text.replace('_', ' ')
+    return 'Python {}' .format(repla)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port='5000')
+>>>>>>> 0ff8436f3f691fd58d8b3867ba6f9057ac64e3c1
